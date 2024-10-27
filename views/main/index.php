@@ -103,7 +103,7 @@
                     <h2>Profesionales</h2>
                     <p>
                       En <b>Veterinaria Puno</b>, estamos comprometidos con la salud y el bienestar de cada una de las mascotas que forman parte de tu familia. Nuestro equipo de veterinarios y personal especializado brinda atencion medica de alta calidad con un enfoque humano y cariñoso, creando un entorno seguro y amigable para tus compañeros.
-                      Queremos ser el centro veterinario de referencia en la región, donde cada familia confíe en nuestros servicios para el cuidado y la salud de sus mascotas. Aspiramos a fortalecer la relación entre humanos y animales, promoviendo el respeto y el cariño hacia todos los seres vivos.        
+                      Queremos ser el centro veterinario de referencia en la región, donde cada familia confíe en nuestros servicios para el cuidado y la salud de sus mascotas. Aspiramos a fortalecer la relación entre humanos y animales, promoviendo el respeto y el cariño hacia todos los seres vivos.
                     </p>
                   </figcaption>
                 </figure>
@@ -198,13 +198,14 @@
         <section class="section" id="contact">
           <div class="top-header">
             <h1>Ven y reserva tu cita</h1>
-            <span>Elige la fecha y hora de tu cita</span>
+            <span>Elige la fecha y hora de tu cita</span><br>
+            <span>Dale CLICK al dia de tu cita</span>
           </div>
           <div class="calendar" id="calendar"></div>
           <!-- <div class="row">
-            
 
-            <!-- <div class="col">
+
+            <div class="col">
               <div class="contact-info">
                 <h2>Find me<i class="uil uil-corner-right-down"></i></h2>
                 <p>
@@ -247,10 +248,47 @@
                   </button>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div> -->
         </section>
       </main>
+
+      <div class="modal" id="modal">
+        <div class="modal-info">
+          <h4>Reservar Cita</h4>
+        </div>
+        <div class="modal-content">
+          <form action="" id="form-reservar" class="formulario">
+            <label for="">Fecha</label>
+            <input type="date" id="fecha" name="fecha" readonly>
+            <label for="">Hora:</label>
+            <select name="hora" id="hora">
+              <option value="10:00:00">10:00 - 11:00</option>
+              <option value="11:00:00">11:00 - 12:00</option>
+              <option value="14:00:00">14:00 - 15:00</option>
+              <option value="15:00:00">15:00 - 16:00</option>
+            </select>
+            <label for="dni">DNI: </label>
+            <input type="text" id="dni" name="dni" minlength="8" maxlength="8">
+            <label for="">Nombre</label>
+            <input type="text" id="nombre" name="nombre" readonly>
+            <label for="">Apellido</label>
+            <input type="text" id="apellido" name="apellido" readonly>
+            <label for="">Telefono</label>
+            <input type="text" id="telefono" name="telefono" minlength="9" maxlength="9">
+            <label for="">Nombre de Mascota</label>
+            <input type="text" id="mascota" name="mascota">
+            <label for="">Especio</label>
+            <input type="text" id="especie" name="especie">
+            <label for="">Raza</label>
+            <input type="text" id="raza" name="raza">
+            <div class="buttons">
+              <button class="btn-reserva" type="submit">RESERVAR</button>
+              <button class="btn-cerrar" type="button" id="btn-cerrar">CERRAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <!-- Footer -->
       <footer>
         <div class="middle-footer">

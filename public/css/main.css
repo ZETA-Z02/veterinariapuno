@@ -751,3 +751,53 @@ footer {
     margin-left: 50%;
   }
 }
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 500px;
+  width: 100%;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+.modal-info{
+  font-size: 23px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #241e1e;
+}
+.formulario{
+  font-size: 20px;
+  color: #100f0f;
+  display: flex;
+  flex-direction: column;
+}
+.formulario input{
+  border-radius: 5px;
+  border: 0.5px solid #7693f0;
+  font-size: 18px;
+}
+.buttons{
+  margin-top: 10px;
+  display: flex;
+}
+.buttons button{
+  margin: 0 10%;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.btn-reserva{
+  background-color: #47ea15;
+  border-color: #3eac1c;
+}
+.btn-cerrar{
+  background-color: #f23a3a;
+  border-color: #ea1515;
+}
