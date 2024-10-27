@@ -23,9 +23,8 @@ class MainModel extends Model{
                 $sqlmascota = "INSERT INTO mascota VALUES(null,'$idcliente','$mascota','$especie','$raza');";
                 $response1 = $this->conn->ConsultaSin($sqlmascota);
                 $idmascota = $this->conn->conn->insert_id;
-                $sqlcita = "INSERT INTO citas (idcita,idcliente,idmascota,fecha,hora) VALUES('$idcliente','$idmascota','$fecha','$hora');";
+                $sqlcita = "INSERT INTO citas (idcliente,idmascota,fecha,hora) VALUES('$idcliente','$idmascota','$fecha','$hora');";
                 $response2 = $this->conn->ConsultaSin($sqlcita);
-
             }else{
                 $sqlmascota = "INSERT INTO mascota VALUES(null,'$id','$mascota','$especie','$raza');";
                 $response = $this->conn->ConsultaSin($sqlmascota);
