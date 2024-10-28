@@ -97,6 +97,7 @@ $(document).ready(function () {
   calendar.render();
   reservar(calendar);
   insert(calendar);
+  getHora(calendar);
 });
 function reservar(calendar) {
   calendar.on('dateClick', function (info) {
@@ -187,4 +188,30 @@ function dni() {
       console.log("no hay dni");
     }
   });
+}
+function getHora(calendar){
+  calendar.on('dateClick', function (info) {
+    let date = info.date;
+    let fecha = date.toISOString().split('T')[0];
+    //console.log(fecha,' ',date);
+    $.ajax({
+      type: "POST",
+      url: `http://localhost/veterinariapuno/main/getHora`,
+      data: {fecha},
+      dataType: "json",
+      success: function (response) {
+        console.log(response);
+        html = '';
+        if(!Array.isArray(response)){
+          response = Object.values(response);
+        }
+        for (let i = 0; i < response.length; i++) {
+          html += `<option value="${response[i]}">${response[i]}</option>`;
+        }
+        $("#hora").html(html);
+      },error: function (error){
+        console.log(error);
+      }
+    });
+  })
 }

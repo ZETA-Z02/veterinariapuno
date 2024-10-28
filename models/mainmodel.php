@@ -42,4 +42,9 @@ class MainModel extends Model{
             return false;
         }
     }
+    public function GetHora($fecha){
+        $sql = "SELECT hora FROM citas WHERE fecha = '$fecha' AND estado = 0;";
+        $data = $this->conn->ConsultaCon($sql);
+        return $data;
+    }
 }

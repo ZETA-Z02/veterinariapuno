@@ -263,10 +263,10 @@
             <input type="date" id="fecha" name="fecha" readonly>
             <label for="">Hora:</label>
             <select name="hora" id="hora">
-              <option value="10:00:00">10:00 - 11:00</option>
+              <!-- <option value="10:00:00">10:00 - 11:00</option>
               <option value="11:00:00">11:00 - 12:00</option>
               <option value="14:00:00">14:00 - 15:00</option>
-              <option value="15:00:00">15:00 - 16:00</option>
+              <option value="15:00:00">15:00 - 16:00</option> -->
             </select>
             <label for="dni">DNI: </label>
             <input type="text" id="dni" name="dni" minlength="8" maxlength="8">

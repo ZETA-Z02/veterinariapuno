@@ -13,7 +13,7 @@ class Main extends Controller
 	public function Get(){
         $data = $this->model->Get();
         while($row = mysqli_fetch_array($data)){
-            $fechaend = strtotime('+2 hour',strtotime($row['hora']));
+            $fechaend = strtotime('+1 hour',strtotime($row['hora']));
             $json[] = array(
                 'title' => ($row['estado']==1)?'Atendido':':00 Reservado',
                 'start' => $row['fecha'].'T'.$row['hora'],
@@ -45,6 +45,17 @@ class Main extends Controller
         }else{
             echo "ERROR";
         }
+    }
+    public function getHora(){
+        $fecha = $_POST['fecha'];
+        $data = $this->model->GetHora($fecha);
+        $horas = array('10:00:00','11:00:00','14:00:00','15:00:00');
+        while($row = mysqli_fetch_array($data)){
+            if(in_array($row['hora'], $horas)){
+                unset($horas[array_search($row['hora'], $horas)]);
+            }
+        }
+        echo json_encode($horas);
     }
     public function dni()
     {
