@@ -144,6 +144,12 @@ function insert(calendar){
       url: "http://localhost/veterinariapuno/main/reservar",
       data: data,
       success: function (response) {
+        if(response == 1 or response == true){
+          alert("Ya tiene cita, no puede reservar otra");
+          $("#modal").hide();
+          e.target.reset();
+          return;
+        }
         console.log(response);
         $("#modal").hide();
         e.target.reset();

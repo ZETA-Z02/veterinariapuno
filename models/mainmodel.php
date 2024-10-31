@@ -47,4 +47,10 @@ class MainModel extends Model{
         $data = $this->conn->ConsultaCon($sql);
         return $data;
     }
+    //Verifica si un cliente ya tiene una cita  
+    public function verificar($dni){
+        $sql = "SELECT COUNT(ci.idcita) AS total,ci.*, c.* FROM citas ci JOIN cliente c ON ci.idcliente=c.idcliente WHERE dni = '$dni' AND estado = 0;";
+        $data = $this->conn->ConsultaArray($sql);
+        return $data;
+    }
 }

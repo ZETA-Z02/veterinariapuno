@@ -36,6 +36,12 @@ class Main extends Controller
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora']; 
         $id = null;
+        // Verificar si ya tiene una cita
+        $data = $this->model->verificar($dni);
+        if($data['total']>0){
+            echo true;
+            return;
+        }
         if($this->model->GetCliente($dni)){
             $data = $this->model->GetCliente($dni);
             $id = $data['idcliente'];
