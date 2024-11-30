@@ -13,19 +13,23 @@ class MainModel extends Model{
         $data = $this->conn->ConsultaArray($sql);
         return $data;
     }
-    public function Reservar($dni,$nombre,$apellido,$telefono,$mascota,$especie,$raza,$fecha,$hora,$id=null){
+    public function Reservar($dni,$nombre,$apellido,$telefono,$mascota,$especie,$raza,$fecha,$hora,$numeroBoleta,$fechaBoleta,$id=null){
         $this->conn->conn->begin_transaction();
         try{
             if($id==null){
                 $sqlcliente = "INSERT INTO cliente VALUES(null,'$nombre','$apellido','$dni','$telefono');";
                 $response = $this->conn->ConsultaSin($sqlcliente);
                 $idcliente = $this->conn->conn->insert_id;
+                $sqlboleta = "INSERT INTO boletas VALUES(null,'$idcliente','$numeroBoleta','$fechaBoleta');";
+                $response = $this->conn->ConsultaSin($sqlboleta);
                 $sqlmascota = "INSERT INTO mascota VALUES(null,'$idcliente','$mascota','$especie','$raza');";
                 $response1 = $this->conn->ConsultaSin($sqlmascota);
                 $idmascota = $this->conn->conn->insert_id;
                 $sqlcita = "INSERT INTO citas (idcliente,idmascota,fecha,hora) VALUES('$idcliente','$idmascota','$fecha','$hora');";
                 $response2 = $this->conn->ConsultaSin($sqlcita);
             }else{
+                $sqlboleta = "INSERT INTO boletas VALUES(null,'$id','$numeroBoleta','$fechaBoleta');";
+                $response = $this->conn->ConsultaSin($sqlboleta);
                 $sqlmascota = "INSERT INTO mascota VALUES(null,'$id','$mascota','$especie','$raza');";
                 $response = $this->conn->ConsultaSin($sqlmascota);
                 $idmascota = $this->conn->conn->insert_id;
@@ -51,6 +55,16 @@ class MainModel extends Model{
     public function verificar($dni){
         $sql = "SELECT COUNT(ci.idcita) AS total,ci.*, c.* FROM citas ci JOIN cliente c ON ci.idcliente=c.idcliente WHERE dni = '$dni' AND estado = 0;";
         $data = $this->conn->ConsultaArray($sql);
+        return $data;
+    }
+    public function especies(){
+        $sql = "SELECT * FROM especies";
+        $data = $this->conn->ConsultaCon($sql);
+        return $data;
+    }
+    public function razas($idespecie){
+        $sql = "SELECT * FROM razas WHERE idespecie = '$idespecie'";
+        $data = $this->conn->ConsultaCon($sql);
         return $data;
     }
 }

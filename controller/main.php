@@ -36,6 +36,10 @@ class Main extends Controller
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora']; 
         $id = null;
+        // Registrar la boleta
+        $numero = $_POST['numeroBoleta'];
+        $fechaBoleta = $_POST['fechaBoleta'];
+
         // Verificar si ya tiene una cita
         $data = $this->model->verificar($dni);
         if($data['total']>0){
@@ -46,7 +50,7 @@ class Main extends Controller
             $data = $this->model->GetCliente($dni);
             $id = $data['idcliente'];
         }        
-        if($this->model->Reservar($dni,$nombre,$apellido,$telefono,$mascota,$especie,$raza,$fecha,$hora,id:$id)){
+        if($this->model->Reservar($dni,$nombre,$apellido,$telefono,$mascota,$especie,$raza,$fecha,$hora,$numero,$fechaBoleta,id:$id)){
             echo "SUCCES POST";
         }else{
             echo "ERROR";
@@ -62,6 +66,27 @@ class Main extends Controller
             }
         }
         echo json_encode($horas);
+    }
+    public function especies(){
+        $data = $this->model->especies();
+        while($row = mysqli_fetch_array($data)){
+            $json[] = array(
+                'idespecie' => $row['idespecie'],
+                'especie' => $row['especie']
+            );
+        }
+        echo json_encode($json);
+    }
+    public function razas(){
+        $id = $_POST['idespecie'];
+        $data = $this->model->razas($id);
+        while($row = mysqli_fetch_array($data)){
+            $json[] = array(
+                'idraza' => $row['idraza'],
+                'raza' => $row['raza']
+            );
+        }
+        echo json_encode($json);
     }
     public function dni()
     {

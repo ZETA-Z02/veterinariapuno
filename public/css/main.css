@@ -751,21 +751,23 @@ footer {
     margin-left: 50%;
   }
 }
+
+
 .modal{
+  min-height: 55vh;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   max-width: 500px;
-  width: 100%;
   background: #ffffff;
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  z-index: 10;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  z-index: 99999;
 }
 .modal-info{
-  font-size: 23px;
+  font-size: 1.2rem;
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -773,12 +775,20 @@ footer {
   color: #241e1e;
 }
 .formulario{
-  font-size: 20px;
+  box-sizing: border-box;
+  font-size: 1rem;
   color: #100f0f;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px;
+  
+}
+.item{
+  flex: 1 1 calc(50% - 12px);
+  box-sizing: border-box;
 }
 .formulario input{
+  width: 50%;
   border-radius: 5px;
   border: 0.5px solid #7693f0;
   font-size: 18px;
