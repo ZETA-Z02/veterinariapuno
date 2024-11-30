@@ -266,7 +266,7 @@
         <form action="" id="form-reservar" class="">
           <div class="boleta formulario" id="boleta">
             <label for="" class="item">Codigo:</label>
-            <input type="text" name="numeroBoleta" class="item">
+            <input type="text" name="numeroBoleta" id="numeroBoleta" class="item">
             <label for="" class="item">Fecha de la boleta:</label>
             <input type="date" name="fechaBoleta" class="item">
           </div>

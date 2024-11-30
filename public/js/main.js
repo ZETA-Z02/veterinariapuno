@@ -156,6 +156,10 @@ function insert(calendar) {
         }
         console.log(response);
         $("#modal").hide();
+        $("#datos-cita").hide();
+        $("#enviar").hide();
+        $("#siguiente").show();
+        $("#boleta").show();
         e.target.reset();
         //calendar.render();
         calendar.refetchEvents();

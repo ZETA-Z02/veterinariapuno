@@ -2,6 +2,7 @@ $(document).ready(function () {
   getespecies();
   getrazas();
   btn_siguiente();
+  numberLeght('#numeroBoleta','7')
 });
 
 function btn_siguiente(){
